@@ -27,6 +27,8 @@
  *	__kprobes_text_start, __kprobes_text_end
  *	__entry_text_start, __entry_text_end
  *	__ctors_start, __ctors_end
+ *	__irqentry_text_start, __irqentry_text_end
+ *	__softirqentry_text_start, __softirqentry_text_end
  */
 extern char _text[], _stext[], _etext[];
 extern char _data[], _sdata[], _edata[];
@@ -42,6 +44,8 @@ extern char __start_rodata[], __end_rodata[];
 #ifdef	CONFIG_RKP_KDP
 extern char __rkp_ro_start[], __rkp_ro_end[];
 #endif /*CONFIG_RKP_KDP*/
+extern char __irqentry_text_start[], __irqentry_text_end[];
+extern char __softirqentry_text_start[], __softirqentry_text_end[];
 
 /* Start and end of .ctors section - used for constructor calls. */
 extern char __ctors_start[], __ctors_end[];
