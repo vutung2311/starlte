@@ -1724,7 +1724,8 @@ static int find_lowest_rq(struct task_struct *task);
 
 #if defined(CONFIG_SCHED_USE_FLUID_RT) && defined(CONFIG_SCHED_EHMP)
 static int
-select_task_rq_rt_fluid(struct task_struct *p, int cpu, int sd_flag, int flags)
+select_task_rq_rt_fluid(struct task_struct *p, int cpu, int sd_flag, int flags,
+		  int sibling_count_hint)
 {
 	int target;
 
@@ -1756,7 +1757,8 @@ static inline bool test_victim_flag(struct task_struct *p)
 }
 #else
 static int
-select_task_rq_rt(struct task_struct *p, int cpu, int sd_flag, int flags)
+select_task_rq_rt(struct task_struct *p, int cpu, int sd_flag, int flags,
+		  int sibling_count_hint)
 {
 	struct task_struct *curr;
 	struct rq *rq;
