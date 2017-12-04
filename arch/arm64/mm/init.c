@@ -332,6 +332,7 @@ void __init arm64_memblock_init(void)
 			memblock_end_of_DRAM() - ZONE_MOVABLE_SIZE_BYTES;
 	else
 		arm64_dma_phys_limit = PHYS_MASK + 1;
+	high_memory = __va(memblock_end_of_DRAM() - 1) + 1;
 	dma_contiguous_reserve(arm64_dma_phys_limit);
 	set_memsize_kernel_type(MEMSIZE_KERNEL_OTHERS);
 
@@ -360,7 +361,6 @@ void __init bootmem_init(void)
 	sparse_init();
 	zone_sizes_init(min, max);
 
-	high_memory = __va((max << PAGE_SHIFT) - 1) + 1;
 	memblock_dump_all();
 	set_memsize_kernel_type(MEMSIZE_KERNEL_OTHERS);
 }
