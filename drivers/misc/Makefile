@@ -71,6 +71,7 @@ lkdtm-$(CONFIG_LKDTM)		+= lkdtm_usercopy.o
 obj-$(CONFIG_TRUSTONIC_TEE)	+= tzic64.o
 obj-$(CONFIG_TIMA_LOG)		+= tima_debug_log.o
 
+CFLAGS_lkdtm_rodata.o		+= $(DISABLE_LTO)
 OBJCOPYFLAGS :=
 OBJCOPYFLAGS_lkdtm_rodata_objcopy.o := \
 			--set-section-flags .text=alloc,readonly \
