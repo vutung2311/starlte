@@ -724,6 +724,8 @@ struct ufs_hba {
 #if defined(CONFIG_UFS_DATA_LOG)
 	atomic_t	log_count;
 #endif
+	struct io_latency_state io_lat_read;
+	struct io_latency_state io_lat_write;
 };
 
 /* Returns true if clocks can be gated. Otherwise false */
