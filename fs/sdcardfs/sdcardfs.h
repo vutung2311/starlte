@@ -232,6 +232,7 @@ struct sdcardfs_mount_options {
 struct sdcardfs_vfsmount_options {
 	gid_t gid;
 	mode_t mask;
+	bool default_normal;
 };
 
 extern int parse_options_remount(struct super_block *sb, char *options, int silent,
