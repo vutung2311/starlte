@@ -1052,6 +1052,7 @@ el0_svc_naked:					// compat entry point
 
 2:
 #endif
+	mask_nospec64 scno, sc_nr, x19	// enforce bounds for syscall number
 	ldr	x16, [stbl, scno, lsl #3]	// address in the syscall table
 	blr	x16				// call sys_* routine
 	b	ret_fast_syscall
