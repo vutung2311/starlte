@@ -1275,6 +1275,8 @@ bool max77705_fg_init(struct max77705_fuelgauge_data *fuelgauge)
 		pr_info("%s: DISCHARGE_THRESHOLD Value : 0x%x\n",
 			__func__, (data[1] << 8) | data[0]);
 	}
+	
+	max77705_write_word(fuelgauge->i2c, DESIGNCAP_REG, fuelgauge->battery_data->Capacity);
 
 	return true;
 }
