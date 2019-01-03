@@ -92,10 +92,12 @@
 
 #define SO_CNX_ADVICE		53
 
+#ifdef CONFIG_KNOX_NCM
 /* START_OF_KNOX_NPA */
 #define SO_SET_DOMAIN_NAME 55
 #define SO_SET_DNS_UID 56
 /* END_OF_KNOX_NPA */
+#endif
 
 #define SO_COOKIE		57
 

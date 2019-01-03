@@ -632,6 +632,7 @@ out:
 	return ret;
 }
 
+#ifdef CONFIG_KNOX_NCM
 /* START_OF_KNOX_NPA */
 /** The function sets the domain name associated with the socket. **/
 static int sock_set_domain_name(struct sock *sk, char __user *optval, int optlen)
@@ -680,6 +681,7 @@ out:
 }
 
 /* END_OF_KNOX_NPA */
+#endif
 
 static inline void sock_valbool_flag(struct sock *sk, int bit, int valbool)
 {
@@ -729,12 +731,14 @@ int sock_setsockopt(struct socket *sock, int level, int optname,
 	if (optname == SO_BINDTODEVICE)
 		return sock_setbindtodevice(sk, optval, optlen);
 
+#ifdef CONFIG_KNOX_NCM
 	/* START_OF_KNOX_NPA */
 	if (optname == SO_SET_DOMAIN_NAME)
 		return sock_set_domain_name(sk, optval, optlen);
 	if (optname == SO_SET_DNS_UID)
 		return sock_set_dns_uid(sk, optval, optlen);
 	/* END_OF_KNOX_NPA */
+#endif
 
 	if (optlen < sizeof(int))
 		return -EINVAL;
