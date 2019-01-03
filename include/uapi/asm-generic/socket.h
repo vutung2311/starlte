@@ -94,6 +94,7 @@
 
 #define SO_COOKIE		57
 
+#ifdef CONFIG_KNOX_NCM
 // KNOX NPA - START
 #if ANDROID_VERSION < 90000
 #define SO_SET_DOMAIN_NAME	55
@@ -105,5 +106,6 @@
 #define SO_SET_DNS_PID		1002
 #endif
 // KNOX NPA - END
+#endif
 
 #endif /* __ASM_GENERIC_SOCKET_H */
