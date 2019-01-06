@@ -49,7 +49,7 @@
 #include <asm/tlb.h>
 #include <asm/alternative.h>
 
-#ifdef CONFIG_RELOCATABLE_KERNEL
+#ifdef CONFIG_RELOCATABLE
 #include <linux/memblock.h>
 #endif
 
@@ -558,7 +558,7 @@ static int __init keepinitrd_setup(char *__unused)
 __setup("keepinitrd", keepinitrd_setup);
 #endif
 
-#if defined(CONFIG_RELOCATABLE_KERNEL) || defined(CONFIG_RELOCATABLE)
+#ifdef CONFIG_RELOCATABLE
 static unsigned long kaslr_mem  __initdata;
 static unsigned long kaslr_size  __initdata;
 
