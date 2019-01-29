@@ -1570,7 +1570,7 @@ int __get_user_pages_fast(unsigned long start, int nr_pages, int write,
 	end = start + len;
 
 	if (unlikely(!access_ok(write ? VERIFY_WRITE : VERIFY_READ,
-					start, len)))
+					(const void __user *)start, len)))
 		return 0;
 
 	/*
