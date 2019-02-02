@@ -114,3 +114,14 @@ all.config
 
 # Kdevelop4
 *.kdev4
+
+# Build log
+build.log
+last_kmsg*
+logcat*
+
+# Kernel flashable zip
+g960f_kernel*.zip
+
+# should keep .gitkeep
+!.gitkeep
