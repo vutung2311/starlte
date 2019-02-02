@@ -4528,9 +4528,6 @@ static s32
 wl_role_to_cfg80211_type(uint16 role, uint16 *wl_iftype, uint16 *mode)
 {
 	switch (role) {
-		*wl_iftype = WL_IF_TYPE_AWDL;
-		*mode = WL_MODE_AWDL;
-		return NL80211_IFTYPE_STATION;
 	case WLC_E_IF_ROLE_STA:
 		*wl_iftype = WL_IF_TYPE_STA;
 		*mode = WL_MODE_BSS;
@@ -23118,8 +23115,8 @@ wl_update_ap_rps_params(struct net_device *dev, ap_rps_info_t* rps, char *ifname
 	if (rps->quiet_time < RADIO_PWRSAVE_QUIETTIME_MIN)
 		return BCME_BADARG;
 
-	if (rps->sta_assoc_check > RADIO_PWRSAVE_ASSOCCHECK_MAX ||
-		rps->sta_assoc_check < RADIO_PWRSAVE_ASSOCCHECK_MIN)
+	if ((u8)rps->sta_assoc_check > RADIO_PWRSAVE_ASSOCCHECK_MAX ||
+		(u8)rps->sta_assoc_check < RADIO_PWRSAVE_ASSOCCHECK_MIN)
 		return BCME_BADARG;
 
 	cfg->ap_rps_info.pps = rps->pps;

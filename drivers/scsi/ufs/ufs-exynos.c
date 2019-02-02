@@ -840,7 +840,7 @@ static void exynos_ufs_set_nexus_t_task_mgmt(struct ufs_hba *hba, int tag, u8 tm
 static void exynos_ufs_hibern8_notify(struct ufs_hba *hba,
 				u8 enter, bool notify)
 {
-	switch (notify) {
+	switch ((enum ufs_notify_change_status)notify) {
 	case PRE_CHANGE:
 		exynos_ufs_pre_hibern8(hba, enter);
 		break;
@@ -858,7 +858,7 @@ static int exynos_ufs_hibern8_prepare(struct ufs_hba *hba,
 	struct exynos_ufs *ufs = to_exynos_ufs(hba);
 	int ret = 0;
 
-	switch (notify) {
+	switch ((enum ufs_notify_change_status)notify) {
 	case PRE_CHANGE:
 		if(!enter)
 			ret = ufs_pre_h8_exit(ufs);
