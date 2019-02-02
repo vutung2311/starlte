@@ -302,8 +302,9 @@ int callback_bbd_on_mcu_ready(void *ssh_data, bool ready)
         for(i = 0; i < totalLen; i++) {
             if(src[i] == '"' || src[i] == '<' || src[i] == '>')
                 continue;
-            if(src[i] == ';')
+            if(src[i] == ';') {
                 break;
+			}
                 dst[idx++] = src[i];
         }
 }
@@ -352,7 +353,7 @@ int callback_bbd_on_mcu_reset(void *ssh_data, bool IsNoResp)
 	if (!data)
 		return -1;
         if(IsNoResp && !data->resetting)
-            data->IsNoRespCnt++;
+            data->IsNoRespCnt = true;
 
 	data->resetting = true;
 	//data->uResetCnt++;
