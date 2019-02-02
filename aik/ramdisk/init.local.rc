@@ -1,0 +1,6 @@
+# Local kernel stuff goes here.
+
+# Disable the process authenticator daemon.
+#
+on property:sys.boot_completed=1
+	stop proca
