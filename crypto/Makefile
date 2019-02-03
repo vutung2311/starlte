@@ -31,7 +31,9 @@ crypto_hash-y += ahash.o
 crypto_hash-y += shash.o
 obj-$(CONFIG_CRYPTO_HASH2) += crypto_hash.o
 
+ifneq ($(cc-name),clang)
 CFLAGS_testmgr.o = -fno-merge-constants
+endif
 cryptomgr-y := algboss.o testmgr.o
 obj-$(CONFIG_CRYPTO_MANAGER2) += cryptomgr.o
 

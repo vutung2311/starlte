@@ -1191,7 +1191,7 @@ static void get_dev_and_dir(const struct sk_buff *skb,
 		       par->hooknum, __func__);
 		BUG();
 	}
-	if (unlikely(!(*el_dev)->name)) {
+	if (unlikely((*el_dev)->name == NULL)) {
 		pr_err("qtaguid[%d]: %s(): no dev->name?!!\n",
 		       par->hooknum, __func__);
 		BUG();

@@ -568,7 +568,7 @@ int exynos_ss_dump(void)
 			/* L3 MERR */
 			asm ("msr S3_1_c15_c7_1, %0\n\t"
 					"isb\n"
-					:: "r" (0));
+					:: "r" ((__u64)0));
 			asm ("mrs %0, S3_1_c15_c3_0\n\t"
 					"mrs %1, S3_1_c15_c3_4\n"
 					: "=r" (reg1), "=r" (reg2));
@@ -579,7 +579,7 @@ int exynos_ss_dump(void)
 				pr_emerg("BANK0 L3MERR0SR: %016lx, L3MERR1SR: %016lx\n", reg1, reg2);
 			asm ("msr S3_1_c15_c7_1, %0\n\t"
 					"isb\n"
-					:: "r" (1));
+					:: "r" ((__u64)1));
 			asm ("mrs %0, S3_1_c15_c3_0\n\t"
 					"mrs %1, S3_1_c15_c3_4\n"
 					: "=r" (reg1), "=r" (reg2));
@@ -590,7 +590,7 @@ int exynos_ss_dump(void)
 				pr_emerg("BANK1 L3MERR0SR: %016lx, L3MERR1SR: %016lx\n", reg1, reg2);
 			asm ("msr S3_1_c15_c7_1, %0\n\t"
 					"isb\n"
-					:: "r" (2));
+					:: "r" ((__u64)2));
 			asm ("mrs %0, S3_1_c15_c3_0\n\t"
 					"mrs %1, S3_1_c15_c3_4\n"
 					: "=r" (reg1), "=r" (reg2));
@@ -601,7 +601,7 @@ int exynos_ss_dump(void)
 				pr_emerg("BANK2 L3MERR0SR: %016lx, L3MERR1SR: %016lx\n", reg1, reg2);
 			asm ("msr S3_1_c15_c7_1, %0\n\t"
 					"isb\n"
-					:: "r" (3));
+					:: "r" ((__u64)3));
 			asm ("mrs %0, S3_1_c15_c3_0\n\t"
 					"mrs %1, S3_1_c15_c3_4\n"
 					: "=r" (reg1), "=r" (reg2));
@@ -631,7 +631,7 @@ int exynos_ss_dump(void)
 			else
 				pr_emerg("DISR_EL1: %016lx\n", reg1);
 
-			asm ("msr S3_0_c5_c3_1, %0\n"  :: "r" (0)); /* set 1st ERRSELR_EL1 */
+			asm ("msr S3_0_c5_c3_1, %0\n"  :: "r" ((__u64)0)); /* set 1st ERRSELR_EL1 */
 
 			asm ("mrs %0, S3_0_c5_c4_2\n"
 					"mrs %1, S3_0_c5_c4_3\n"
@@ -645,7 +645,7 @@ int exynos_ss_dump(void)
 				pr_emerg("1st : ERXSTATUS_EL1: %016lx, ERXADDR_EL1: %016lx, "
 						"ERXMISC0_EL1: %016lx\n", reg1, reg2, reg3);
 
-			asm ("msr S3_0_c5_c3_1, %0\n"  :: "r" (1)); /* set 2nd ERRSELR_EL1 */
+			asm ("msr S3_0_c5_c3_1, %0\n"  :: "r" ((__u64)1)); /* set 2nd ERRSELR_EL1 */
 
 			asm ("mrs %0, S3_0_c5_c4_2\n"
 					"mrs %1, S3_0_c5_c4_3\n"

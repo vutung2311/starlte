@@ -62,7 +62,7 @@ static unsigned long gator_protocol_version = PROTOCOL_VERSION;
 #error gator requires the kernel to have CONFIG_LOCAL_TIMERS defined on SMP systems
 #endif
 
-#if !(GATOR_PERF_PMU_SUPPORT)
+#ifndef GATOR_PERF_PMU_SUPPORT
 #ifndef CONFIG_PERF_EVENTS
 #error gator requires the kernel to have CONFIG_PERF_EVENTS defined to support pmu hardware counters
 #elif !defined CONFIG_HW_PERF_EVENTS
@@ -280,7 +280,7 @@ module_param_named(src_md5, gator_src_md5, charp, 0444);
 u32 gator_cpuid(void)
 {
 #if defined(__arm__) || defined(__aarch64__)
-    u32 val;
+    unsigned long val;
 #if !defined(__aarch64__)
     asm volatile("mrc p15, 0, %0, c0, c0, 0" : "=r" (val));
 #else

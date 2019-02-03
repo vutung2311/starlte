@@ -65,7 +65,7 @@ static DEFINE_PER_CPU(long long, proc_buffer[2 * (PROC_COUNT + 3)]);
 
 static void do_read(void);
 
-#if USE_THREAD
+#ifdef USE_THREAD
 
 static int gator_meminfo_func(void *data);
 static bool gator_meminfo_run;
@@ -165,7 +165,7 @@ static int gator_events_meminfo_start(void)
         goto mm_page_alloc_exit;
 
     do_read();
-#if USE_THREAD
+#ifdef USE_THREAD
     /* Start worker thread */
     gator_meminfo_run = true;
     /* Since the mutex starts unlocked, memory values will be initialized */
@@ -177,7 +177,7 @@ static int gator_events_meminfo_start(void)
 
     return 0;
 
-#if USE_THREAD
+#ifdef USE_THREAD
 kthread_run_exit:
     GATOR_UNREGISTER_TRACE(mm_page_alloc);
 #endif
@@ -196,7 +196,7 @@ static void gator_events_meminfo_stop(void)
         GATOR_UNREGISTER_TRACE(mm_page_free_batched);
         GATOR_UNREGISTER_TRACE(mm_page_alloc);
 
-#if USE_THREAD
+#ifdef USE_THREAD
         /* Stop worker thread */
         gator_meminfo_run = false;
         up(&gator_meminfo_sem);
@@ -255,7 +255,7 @@ static void do_read(void)
     new_data_avail = true;
 }
 
-#if USE_THREAD
+#ifdef USE_THREAD
 
 static int gator_meminfo_func(void *data)
 {
@@ -294,14 +294,14 @@ static void meminfo_wake_up_handler(unsigned long unused_data)
 
 static int gator_events_meminfo_read(long long **buffer, bool sched_switch)
 {
-#if !USE_THREAD
+#ifndef USE_THREAD
     static unsigned int last_mem_event;
 #endif
 
     if (!on_primary_core() || !meminfo_global_enabled)
         return 0;
 
-#if !USE_THREAD
+#ifndef USE_THREAD
     if (last_mem_event != mem_event) {
         last_mem_event = mem_event;
         mod_timer(&meminfo_wake_up_timer, jiffies + 1);

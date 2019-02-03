@@ -162,7 +162,7 @@ int wl_cfgvendor_send_async_event(struct wiphy *wiphy,
 	u16 kflags;
 	struct sk_buff *skb;
 
-	kflags = in_atomic() ? GFP_ATOMIC : GFP_KERNEL;
+	kflags = in_atomic() ? (u16)GFP_ATOMIC : (u16)GFP_KERNEL;
 
 	/* Alloc the SKB for vendor_event */
 #if (defined(CONFIG_ARCH_MSM) && defined(SUPPORT_WDEV_CFG80211_VENDOR_EVENT_ALLOC)) || \
@@ -4134,7 +4134,7 @@ wl_cfgvendor_send_nan_event(struct wiphy *wiphy, struct net_device *dev,
 {
 	int ret = BCME_OK;
 	int buf_len = NAN_EVENT_BUFFER_SIZE;
-	u16 kflags = in_atomic() ? GFP_ATOMIC : GFP_KERNEL;
+	u16 kflags = in_atomic() ? (u16)GFP_ATOMIC : (u16)GFP_KERNEL;
 
 	struct bcm_cfg80211 *cfg = wiphy_priv(wiphy);
 	struct sk_buff *msg;
