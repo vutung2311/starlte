@@ -2513,7 +2513,7 @@ static int sony_suspend(struct hid_device *hdev, pm_message_t message)
 	 * On suspend save the current LED state,
 	 * stop running force-feedback and blank the LEDS.
 	 */
-	if (SONY_LED_SUPPORT || SONY_FF_SUPPORT) {
+	if (SONY_LED_SUPPORT | SONY_FF_SUPPORT) {
 		struct sony_sc *sc = hid_get_drvdata(hdev);
 
 #ifdef CONFIG_SONY_FF

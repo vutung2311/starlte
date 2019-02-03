@@ -650,7 +650,7 @@ static void mousedev_generate_response(struct mousedev_client *client,
 		break;
 
 	case 0xe9: /* Get info */
-		client->ps2[1] = 0x60; client->ps2[2] = 3; client->ps2[3] = 200;
+		client->ps2[1] = 0x60; client->ps2[2] = 3; client->ps2[3] = (char)200;
 		client->bufsiz = 4;
 		break;
 

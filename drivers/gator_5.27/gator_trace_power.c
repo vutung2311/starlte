@@ -26,7 +26,7 @@
  * kernel v2.6.38 the now deprecated power_frequency trace point was
  * available prior to 2.6.38, but only for x86
  */
-#if GATOR_CPU_FREQ_SUPPORT
+#ifdef GATOR_CPU_FREQ_SUPPORT
 
 static DEFINE_PER_CPU(ulong, idle_prev_state);
 static ulong power_cpu_enabled[GATOR_CLUSTER_COUNT];

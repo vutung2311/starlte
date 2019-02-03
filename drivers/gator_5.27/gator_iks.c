@@ -7,7 +7,7 @@
  *
  */
 
-#if GATOR_IKS_SUPPORT
+#ifdef GATOR_IKS_SUPPORT
 
 #include <linux/of.h>
 #include <asm/bL_switcher.h>

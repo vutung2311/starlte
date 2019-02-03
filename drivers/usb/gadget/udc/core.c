@@ -140,7 +140,6 @@ int usb_ep_disable(struct usb_ep *ep)
 
 	ret = ep->ops->disable(ep);
 	if (ret) {
-		ret = ret;
 		goto out;
 	}
 
