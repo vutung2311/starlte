@@ -186,7 +186,12 @@ SECTIONS
 	_etext = .;			/* End of text section */
 
 	RO_DATA(PAGE_SIZE)		/* everything from this point to     */
-	EXCEPTION_TABLE(8)		/* __init_begin will be marked RO NX */
+	. = ALIGN(8);			/* __init_begin will be marked RO NX */
+	__ex_table : AT(ADDR(__ex_table) - LOAD_OFFSET) {
+		VMLINUX_SYMBOL(__start___ex_table) = .;
+		KEEP(*(__ex_table))
+		VMLINUX_SYMBOL(__stop___ex_table) = .;
+	}
 	NOTES
 
 	. = ALIGN(SEGMENT_ALIGN);
