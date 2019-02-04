@@ -1,3 +1,4 @@
 defex_packed_rules.inc
 defex_rules_reduced.c
 pack_rules
+file_list

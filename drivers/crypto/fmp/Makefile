@@ -1,5 +1,5 @@
 # Exynos FMP/SMU makefile
-#ccflags-y := -DCONFIG_EXYNOS_FMP_FIPS_FUNC_TEST
+ccflags-y := $(DISABLE_LTO)
 obj-$(CONFIG_EXYNOS_SMU) += smu_dev.o
 obj-$(CONFIG_EXYNOS_FMP_FIPS) += first_file.o
 obj-$(CONFIG_EXYNOS_FMP) += fmp_dev.o fmp_lib.o

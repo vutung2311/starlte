@@ -104,10 +104,10 @@ extern void init_IRQ(void);
 extern void fork_init(void);
 extern void radix_tree_init(void);
 
+#ifdef CONFIG_UH_RKP
 int rkp_support_large_memory;
 EXPORT_SYMBOL(rkp_support_large_memory);
 
-#ifdef CONFIG_UH_RKP
 extern struct vm_struct *vmlist;
 #endif
 
