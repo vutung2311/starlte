@@ -4,6 +4,7 @@ VARIANT=xx
 ARCH=arm64
 export KBUILD_BUILD_USER=BuildUser
 export KBUILD_BUILD_HOST=BuildHost
+export PLATFORM_VERSION=8.0.0
 # export KBUILD_BUILD_TIMESTAMP="Mon Nov 23 00:45:00 +07 1987"
 export KBUILD_COMPILER_STRING="Google Clang 8.0"
 BUILD_CROSS_COMPILE=$HOME/opt/gcc-linaro-7.4.1-2019.02-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-

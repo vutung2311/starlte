@@ -329,6 +329,20 @@ static const char *wl_if_state_strs[WL_IF_STATE_MAX + 1] = {
 #ifdef BCMWAPI_WPI
 #if defined(ANDROID_PLATFORM_VERSION) && (ANDROID_PLATFORM_VERSION >= 8)
 /* WAPI define in ieee80211.h is used */
+#ifndef WLAN_AKM_SUITE_WAPI_PSK
+#undef WLAN_AKM_SUITE_WAPI_PSK
+#define WLAN_AKM_SUITE_WAPI_PSK         0x000FAC04
+#endif
+
+#ifndef WLAN_AKM_SUITE_WAPI_CERT
+#undef WLAN_AKM_SUITE_WAPI_CERT
+#define WLAN_AKM_SUITE_WAPI_CERT        0x000FAC12
+#endif
+
+#ifndef NL80211_WAPI_VERSION_1
+#undef NL80211_WAPI_VERSION_1
+#define NL80211_WAPI_VERSION_1			1 << 2
+#endif
 #else
 #undef WLAN_AKM_SUITE_WAPI_PSK
 #define WLAN_AKM_SUITE_WAPI_PSK         0x000FAC04
