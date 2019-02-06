@@ -23,6 +23,7 @@
 #include "tune.h"
 
 #define SUGOV_KTHREAD_PRIORITY	50
+#define POWER_LIMIT 3500
 
 unsigned long boosted_cpu_util(int cpu);
 
@@ -846,7 +847,7 @@ static int sugov_init(struct cpufreq_policy *policy)
                 }
 	}
 
-	tunables->power_limit = 3500;
+	tunables->power_limit = POWER_LIMIT;
 
 	policy->governor_data = sg_policy;
 	sg_policy->tunables = tunables;
