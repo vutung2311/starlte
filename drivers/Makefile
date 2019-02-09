@@ -198,7 +198,7 @@ obj-y	+= motor/
 obj-y	+= ccic/
 
 # Gator for ARM DS5 tool
-obj-$(CONFIG_GATOR)	+= gator_5.27/
+obj-$(CONFIG_GATOR)	+= gator/
 
 obj-$(CONFIG_EXYNOS_BTS)	+= bts/
 
