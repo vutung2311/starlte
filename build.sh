@@ -10,6 +10,7 @@ export KBUILD_COMPILER_STRING="Google Clang 8.0"
 
 GCC_BIN_PATH=$HOME/opt/gcc-linaro-7.4.1-2019.02-x86_64_aarch64-linux-gnu/bin
 CLANG_BIN_PATH=$HOME/Git/clang-linux-x86/clang-r346389b/bin
+
 BUILD_CROSS_COMPILE=$GCC_BIN_PATH/aarch64-linux-gnu-
 BUILD_CC=$CLANG_BIN_PATH/clang
 # BUILD_CC="${BUILD_CROSS_COMPILE}gcc"
@@ -19,8 +20,8 @@ BUILD_LDLTO=$CLANG_BIN_PATH/ld.lld
 # BUILD_LDLTO="${BUILD_CROSS_COMPILE}ld.gold"
 BUILD_JOB_NUMBER="$(nproc)"
 # BUILD_JOB_NUMBER=1
-OUTPUT_ZIP="g960f_kernel"
 
+OUTPUT_ZIP="g960f_kernel"
 RDIR="$(pwd)"
 
 case ${VARIANT} in

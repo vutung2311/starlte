@@ -219,7 +219,7 @@ find_appropriate_src(struct net *net,
 		     struct nf_conntrack_tuple *result,
 		     const struct nf_nat_range *range)
 {
-	const struct nf_conn *ct;
+	struct nf_conn *ct;
 	struct nf_nat_conn_key key = {
 		.net = net,
 		.tuple = tuple,
