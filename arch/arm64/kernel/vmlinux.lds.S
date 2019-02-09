@@ -113,8 +113,6 @@ SECTIONS
 		EXIT_CALL
 		*(.discard)
 		*(.discard.*)
-		*(.interp .dynamic)
-		*(.dynsym .dynstr .hash)
 	}
 
 	. = KIMAGE_VADDR + TEXT_OFFSET;
@@ -222,14 +220,25 @@ SECTIONS
 		KEEP(*(.altinstr_replacement))
 	}
 	. = ALIGN(0x1000);
-	.rela : {
+	.rela.dyn : {
 		__reloc_start = .;
 		*(.rela .rela*)
 		__reloc_end = .;
 	}
-
-	__rela_offset	= ABSOLUTE(ADDR(.rela) - KIMAGE_VADDR);
-	__rela_size	= SIZEOF(.rela);
+	.dynamic : {
+		*(.dynamic)
+	}
+	.dynsym : {
+		*(.dynsym)
+	}
+	.dynstr : {
+		*(.dynstr)
+	}
+	.hash : {
+		*(.hash)
+	}
+	__rela_offset	= ABSOLUTE(ADDR(.rela.dyn) - KIMAGE_VADDR);
+	__rela_size	= SIZEOF(.rela.dyn);
 
 	. = ALIGN(SEGMENT_ALIGN);
 	__init_end = .;
@@ -283,6 +292,10 @@ SECTIONS
 	HEAD_SYMBOLS
 }
 
+VERSION {
+	/* mark all symbols as local so they are not listed in .dynsym */
+	{ local: *; };
+}
 /*
  * The HYP init code and ID map text can't be longer than a page each,
  * and should not cross a page boundary.

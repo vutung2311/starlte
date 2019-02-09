@@ -7,9 +7,16 @@ export KBUILD_BUILD_HOST=BuildHost
 export PLATFORM_VERSION=8.0.0
 # export KBUILD_BUILD_TIMESTAMP="Mon Nov 23 00:45:00 +07 1987"
 export KBUILD_COMPILER_STRING="Google Clang 8.0"
-BUILD_CROSS_COMPILE=$HOME/opt/gcc-linaro-7.4.1-2019.02-x86_64_aarch64-linux-gnu/bin/aarch64-linux-gnu-
-BUILD_CC=$HOME/Git/clang-linux-x86/clang-r346389b/bin/clang
+
+GCC_BIN_PATH=$HOME/opt/gcc-linaro-7.4.1-2019.02-x86_64_aarch64-linux-gnu/bin
+CLANG_BIN_PATH=$HOME/Git/clang-linux-x86/clang-r346389b/bin
+BUILD_CROSS_COMPILE=$GCC_BIN_PATH/aarch64-linux-gnu-
+BUILD_CC=$CLANG_BIN_PATH/clang
 # BUILD_CC="${BUILD_CROSS_COMPILE}gcc"
+BUILD_LD=$CLANG_BIN_PATH/ld.lld
+# BUILD_LD="${BUILD_CROSS_COMPILE}ld"
+BUILD_LDLTO=$CLANG_BIN_PATH/ld.lld
+# BUILD_LDLTO="${BUILD_CROSS_COMPILE}ld.gold"
 BUILD_JOB_NUMBER="$(nproc)"
 # BUILD_JOB_NUMBER=1
 OUTPUT_ZIP="g960f_kernel"
@@ -50,6 +57,8 @@ FUNC_BUILD_KERNEL()
 
 	make -j$BUILD_JOB_NUMBER ARCH=${ARCH} \
 			CC=$BUILD_CC \
+			LD=$BUILD_LD \
+			LDLTO=$BUILD_LDLTO \
 			CROSS_COMPILE="$BUILD_CROSS_COMPILE" \
 			$KERNEL_DEFCONFIG || exit -1
 
@@ -69,6 +78,8 @@ FUNC_BUILD_KERNEL()
 
 	make -j$BUILD_JOB_NUMBER ARCH=${ARCH} \
 			CC=$BUILD_CC \
+			LD=$BUILD_LD \
+			LDLTO=$BUILD_LDLTO \
 			CROSS_COMPILE="$BUILD_CROSS_COMPILE" || exit -1
 
 	echo ""
