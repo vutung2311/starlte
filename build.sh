@@ -19,8 +19,8 @@ BUILD_LDLTO=$CLANG_BIN_PATH/ld.lld
 # BUILD_LDLTO="${BUILD_CROSS_COMPILE}ld.gold"
 BUILD_JOB_NUMBER="$(nproc)"
 # BUILD_JOB_NUMBER=1
-OUTPUT_ZIP="g960f_kernel"
 
+OUTPUT_ZIP="g960f_kernel"
 RDIR="$(pwd)"
 
 case ${VARIANT} in

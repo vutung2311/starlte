@@ -458,7 +458,7 @@ static inline int get_gid(struct vfsmount *mnt,
 		}
 	}
 
-	if (opts->gid == AID_SDCARD_RW)
+	if (vfsopts->gid == AID_SDCARD_RW)
 		/* As an optimization, certain trusted system components only run
 		 * as owner but operate across all users. Since we're now handing
 		 * out the sdcard_rw GID only to trusted apps, we're okay relaxing
