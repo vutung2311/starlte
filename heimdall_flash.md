@@ -23,4 +23,4 @@ Flash Filename: omr.img
 Flash Filename: modem_debug.bin
 Flash Filename: userdata.img
 
-heimdall flash --BOOT boot.img --CACHE cache.img --CM cm.bin --DQMDBG dqmdbg.img --HIDDEN hidden.img --KEYSTORAGE keystorage.bin --RADIO modem.bin --CP_DEBUG modem_debug.bin --ODM odm.img --OMR omr.img --PARAM param.bin --BOOTLOADER sboot.bin --SYSTEM system.img --UP_PARAM up_param.bin --VENDOR vendor.img
+heimdall flash --CACHE cache.img --CM cm.bin --DQMDBG dqmdbg.img --HIDDEN hidden.img --KEYSTORAGE keystorage.bin --RADIO modem.bin --CP_DEBUG modem_debug.bin --ODM odm.img --OMR omr.img --PARAM param.bin --BOOTLOADER sboot.bin --SYSTEM system.img --UP_PARAM up_param.bin --VENDOR vendor.img
