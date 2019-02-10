@@ -24,13 +24,13 @@ mkdir -p /tmp/starlte
 cd /tmp/starlte
 unzip -o "$ZIP"
 
-ui_print " ";
-ui_print " - mounting system partition"
-mount /system
-
 ui_print " - flashing kernel"
 BOOT=$(resolve_link $(find /dev/block/platform -type l -iname boot))
 dd if=boot.img of="$BOOT"
+
+ui_print " ";
+ui_print " - mounting system partition"
+mount /system
 
 ui_print " - removing Rlc and SecurityLogAgent App"
 rm -rf /system/priv-app/Rlc
@@ -40,6 +40,14 @@ ui_print " - patching build.prop"
 if [ $(grep -c ro.config.tima=1 /system/build.prop) -eq 1 ];
 then
   sed -i 's/ro.config.tima=1/ro.config.tima=0/' /system/build.prop
+fi
+if [ $(grep -c ro.config.kap=true /system/build.prop) -eq 1 ];
+then
+  sed -i 's/ro.config.kap=true/ro.config.kap=false/' /system/build.prop
+fi
+if [ $(grep -c ro.config.kap_default_on=true /system/build.prop) -eq 1 ];
+then
+  sed -i 's/ro.config.kap_default_on=true/ro.config.kap_default_on=false/' /system/build.prop
 fi
 
 ui_print " - removing knox stubs"
@@ -126,9 +134,11 @@ rm -rf /system/priv-app/SystemUIBixby
 rm -rf /system/priv-app/Upday
 rm -rf /system/priv-app/Word_SamsungStub
 
+ui_print " "
 ui_print " - tuning file systems..."
 fstrim -v /system
 
+ui_print " "
 ui_print " - unmounting partition /system"
 umount /system
 
