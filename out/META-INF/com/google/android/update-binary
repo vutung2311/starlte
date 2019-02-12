@@ -133,6 +133,8 @@ rm -rf /system/priv-app/SmartManager_v6_DeviceSecurity
 rm -rf /system/priv-app/SystemUIBixby
 rm -rf /system/priv-app/Upday
 rm -rf /system/priv-app/Word_SamsungStub
+rm -rf /system/preload/NaverV_N
+rm -rf /system/preloadFotaOnly/SamsungMembersStub
 
 ui_print " "
 ui_print " - tuning file systems..."
