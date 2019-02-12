@@ -71,7 +71,8 @@ FUNC_BUILD_KERNEL()
 			echo ""
 			./scripts/config \
 			-e LTO_CLANG \
-			-d ARM64_ERRATUM_843419
+			-d ARM64_ERRATUM_843419 \
+			-d MODVERSIONS
 			OUTPUT_ZIP=${OUTPUT_ZIP}".lto"
 			break
 		fi
