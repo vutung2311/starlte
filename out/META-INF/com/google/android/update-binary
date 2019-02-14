@@ -37,18 +37,7 @@ rm -rf /system/priv-app/Rlc
 rm -rf /system/app/SecurityLogAgent
 
 ui_print " - patching build.prop"
-if [ $(grep -c ro.config.tima=1 /system/build.prop) -eq 1 ];
-then
-  sed -i 's/ro.config.tima=1/ro.config.tima=0/' /system/build.prop
-fi
-if [ $(grep -c ro.config.kap=true /system/build.prop) -eq 1 ];
-then
-  sed -i 's/ro.config.kap=true/ro.config.kap=false/' /system/build.prop
-fi
-if [ $(grep -c ro.config.kap_default_on=true /system/build.prop) -eq 1 ];
-then
-  sed -i 's/ro.config.kap_default_on=true/ro.config.kap_default_on=false/' /system/build.prop
-fi
+sed -i 's/ro.config.tima=1/ro.config.tima=0/' /system/build.prop
 
 ui_print " - removing knox stubs"
 rm -rf /system/app/KnoxAttestationAgent
@@ -101,7 +90,7 @@ rm -rf /system/priv-app/ContainerAgent3
 # rm -f /system/lib64/libknox_km.so
 # rm -f /system/lib64/libknoxvpnfdsender.so
 
-ui_print " - removing bloatware"
+ui_print " - removing bloatwares"
 rm -rf /system/app/AutomationTest_FB
 rm -rf /system/app/CarmodeStub
 rm -rf /system/app/GearManagerStub
@@ -137,10 +126,21 @@ rm -rf /system/preload/NaverV_N
 rm -rf /system/preloadFotaOnly/SamsungMembersStub
 
 ui_print " "
-ui_print " - tuning file systems..."
-fstrim -v /system
+ui_print " - mounting partition /vendor"
+mount /vendor
+
+ui_print " - patching vendor partition..."
+mv -f /vendor/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin /vendor/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin.old
+rm -f /vendor/app/mcRegistry/ffffffffd00000000000000000000062.tlbin /vendor/app/mcRegistry/ffffffffd00000000000000000000062.tlbin.old
 
 ui_print " "
+ui_print " - tuning file systems..."
+fstrim -v /system
+fstrim -v /vendor
+
+ui_print " "
+ui_print " - unmounting parition /vendor"
+umount /vendor
 ui_print " - unmounting partition /system"
 umount /system
 
