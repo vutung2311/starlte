@@ -29,14 +29,14 @@ BOOT=$(resolve_link $(find /dev/block/platform -type l -iname boot))
 dd if=boot.img of="$BOOT"
 
 ui_print " ";
-ui_print " - mounting system partition"
+ui_print " - mounting partition /system"
 mount /system
 
 ui_print " - removing Rlc and SecurityLogAgent App"
 rm -rf /system/priv-app/Rlc
 rm -rf /system/app/SecurityLogAgent
 
-ui_print " - patching build.prop"
+ui_print " - patching /system/build.prop"
 sed -i 's/ro.config.tima=1/ro.config.tima=0/' /system/build.prop
 
 ui_print " - removing bloatwares"
@@ -91,6 +91,19 @@ rm -rf /system/priv-app/PaymentFramework
 ui_print " "
 ui_print " - mounting partition /vendor"
 mount /vendor
+
+ui_print ""
+ui_print " - patching /vendor/build.prop"
+if [ $(grep -c wlan.wfd.hdcp=disable /vendor/build.prop) -eq 0 ];
+then
+  echo 'wlan.wfd.hdcp=disable' >> /vendor/build.prop
+  echo 'ro.kernel.android.checkjni=0' >> /vendor/build.prop
+  echo 'ro.kernel.checkjni=0' >> /vendor/build.prop
+  echo 'ro.securestorage.support=false' >> /vendor/build.prop
+  echo 'persist.security.ams.enforcing=0' >> /vendor/build.prop
+  echo 'ro.security.vaultkeeper.feature=0' >> /vendor/build.prop
+fi
+sed -i 's|ro.frp.pst=/dev/block/persistent|ro.frp.pst=|' /vendor/build.prop
 
 ui_print " "
 ui_print " - tuning file systems..."
