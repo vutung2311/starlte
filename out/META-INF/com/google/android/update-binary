@@ -39,58 +39,9 @@ rm -rf /system/app/SecurityLogAgent
 ui_print " - patching build.prop"
 sed -i 's/ro.config.tima=1/ro.config.tima=0/' /system/build.prop
 
-ui_print " - removing knox stubs"
-rm -rf /system/app/KnoxAttestationAgent
-rm -rf /system/app/KnoxKeyChain
-rm -rf /system/container
-rm -rf /system/priv-app/knoxanalyticsagent
-rm -rf /system/priv-app/knoxvpnproxyhandler
-rm -rf /system/priv-app/KnoxCore
-rm -rf /system/priv-app/KnoxDesktopLauncher
-rm -rf /system/priv-app/ContainerAgent3
-# removing one or many of these files will brick the device, need to pick the one that is safe to be removed
-# rm -f /system/etc/permissions/knoxanalytics.xml
-# rm -f /system/etc/permissions/knoxsdk_edm.xml
-# rm -f /system/etc/permissions/knoxsdk_mdm.xml
-# rm -f /system/etc/permissions/privapp-permissions-com.knox.vpn.proxyhandler.xml
-# rm -f /system/etc/permissions/privapp-permissions-com.samsung.android.knox.analytics.uploader.xml
-# rm -f /system/etc/permissions/privapp-permissions-com.samsung.android.knox.containeragent.xml
-# rm -f /system/etc/permissions/privapp-permissions-com.samsung.android.knox.containercore.xml
-# rm -f /system/etc/permissions/privapp-permissions-com.samsung.knox.securefolder.xml
-# rm -f /system/framework/arm/boot-knoxanalyticssdk.art
-# rm -f /system/framework/arm/boot-knoxanalyticssdk.oat
-# rm -f /system/framework/arm/boot-knoxanalyticssdk.vdex
-# rm -f /system/framework/arm/boot-knoxsdk.art
-# rm -f /system/framework/arm/boot-knoxsdk.oat
-# rm -f /system/framework/arm/boot-knoxsdk.vdex
-# rm -f /system/framework/arm/boot-knoxvpnuidtag.art
-# rm -f /system/framework/arm/boot-knoxvpnuidtag.oat
-# rm -f /system/framework/arm/boot-knoxvpnuidtag.vdex
-# rm -f /system/framework/arm64/boot-knoxanalyticssdk.art
-# rm -f /system/framework/arm64/boot-knoxanalyticssdk.oat
-# rm -f /system/framework/arm64/boot-knoxanalyticssdk.vdex
-# rm -f /system/framework/arm64/boot-knoxsdk.art
-# rm -f /system/framework/arm64/boot-knoxsdk.oat
-# rm -f /system/framework/arm64/boot-knoxsdk.vdex
-# rm -f /system/framework/arm64/boot-knoxvpnuidtag.art
-# rm -f /system/framework/arm64/boot-knoxvpnuidtag.oat
-# rm -f /system/framework/arm64/boot-knoxvpnuidtag.vdex
-# rm -f /system/framework/knoxanalyticssdk.jar
-# rm -f /system/framework/knoxsdk.jar
-# rm -f /system/framework/knoxvpnuidtag.jar
-# rm -f /system/lib/libknox_encryption.so
-# rm -f /system/lib/libknox_filemanager.so
-# rm -f /system/lib/libknox_keyutils.so
-# rm -f /system/lib/libknox_km.so
-# rm -f /system/lib/libknoxvpnfdsender.so
-# rm -f /system/lib64/libjni_knoxvpnproxyhandler.so
-# rm -f /system/lib64/libknox_encryption.so
-# rm -f /system/lib64/libknox_filemanager.so
-# rm -f /system/lib64/libknox_keyutils.so
-# rm -f /system/lib64/libknox_km.so
-# rm -f /system/lib64/libknoxvpnfdsender.so
-
 ui_print " - removing bloatwares"
+rm -rf /system/preload/NaverV_N
+rm -rf /system/preloadFotaOnly/SamsungMembersStub
 rm -rf /system/app/AutomationTest_FB
 rm -rf /system/app/CarmodeStub
 rm -rf /system/app/GearManagerStub
@@ -99,16 +50,27 @@ rm -rf /system/app/FactoryCameraFB
 rm -rf /system/app/FBAppManager_NS
 rm -rf /system/app/FlipboardBriefing
 rm -rf /system/app/VisionIntelligence2
-rm -rf /system/app/SecureFolderSetupPage
 rm -rf /system/app/UniversalMDMClient
 rm -rf /system/app/SamsungPassAutofill_v1
+rm -rf /system/app/KnoxAttestationAgent
+rm -rf /system/app/KnoxKeyChain
+rm -rf /system/app/YahooEdgeFinance
+rm -rf /system/app/YahooEdgeSports
+rm -rf /system/container
+
+rm -rf /system/priv-app/knoxanalyticsagent
+rm -rf /system/priv-app/knoxvpnproxyhandler
+rm -rf /system/priv-app/KnoxCore
+rm -rf /system/priv-app/KnoxDesktopLauncher
+rm -rf /system/priv-app/ContainerAgent3
 rm -rf /system/priv-app/Bixby
 rm -rf /system/priv-app/BixbyAgentStub
-rm -rf /system/priv-app/BixbyGlobalAction
 rm -rf /system/priv-app/BixbyHome
-rm -rf /system/priv-app/BixbyPLMSync
+rm -rf /system/priv-app/BixbyService
 rm -rf /system/priv-app/BixbyVisionFramework
-rm -rf /system/priv-app/BixbyVoiceInput
+rm -rf /system/priv-app/BixbyWakeup
+rm -rf /system/priv-app/SettingsBixby
+rm -rf /system/priv-app/SystemUIBixby2
 rm -rf /system/priv-app/Excel_SamsungStub
 rm -rf /system/priv-app/FBInstaller_NS
 rm -rf /system/priv-app/FBServices
@@ -119,19 +81,16 @@ rm -rf /system/priv-app/serviceModeApp_FB
 rm -rf /system/priv-app/SecureFolder
 rm -rf /system/priv-app/SamsungPass
 rm -rf /system/priv-app/SmartManager_v6_DeviceSecurity
-rm -rf /system/priv-app/SystemUIBixby
 rm -rf /system/priv-app/Upday
 rm -rf /system/priv-app/Word_SamsungStub
-rm -rf /system/preload/NaverV_N
-rm -rf /system/preloadFotaOnly/SamsungMembersStub
+rm -rf /system/priv-app/GalaxyApps*
+rm -rf /system/priv-app/GearVRService
+rm -rf /system/priv-app/Gear360Editor_Beyond
+rm -rf /system/priv-app/PaymentFramework
 
 ui_print " "
 ui_print " - mounting partition /vendor"
 mount /vendor
-
-ui_print " - patching vendor partition..."
-mv -f /vendor/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin /vendor/app/mcRegistry/ffffffffd0000000000000000000000a.tlbin.old
-rm -f /vendor/app/mcRegistry/ffffffffd00000000000000000000062.tlbin /vendor/app/mcRegistry/ffffffffd00000000000000000000062.tlbin.old
 
 ui_print " "
 ui_print " - tuning file systems..."
