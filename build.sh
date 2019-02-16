@@ -21,7 +21,7 @@ BUILD_LDLTO=$CLANG_BIN_PATH/ld.lld
 BUILD_JOB_NUMBER="$(nproc)"
 # BUILD_JOB_NUMBER=1
 
-OUTPUT_ZIP="g960f_kernel"
+OUTPUT_ZIP="g960f_kernel.p"
 RDIR="$(pwd)"
 
 case ${VARIANT} in
