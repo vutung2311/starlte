@@ -1784,9 +1784,8 @@ service charon /system/bin/charon
 
 
 # VaultKeeper
-service vaultkeeperd /system/bin/vaultkeeperd
-    class core
-    disabled
+#service vaultkeeperd /system/bin/vaultkeeperd
+#    class core
 
 # CASS
 service cass /system/bin/cass
