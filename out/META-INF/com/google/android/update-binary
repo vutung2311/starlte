@@ -38,6 +38,7 @@ rm -rf /system/app/SecurityLogAgent
 
 ui_print " - patching /system/build.prop"
 sed -i 's/ro.config.tima=1/ro.config.tima=0/' /system/build.prop
+sed -i 's/ro.treble.enabled=true/ro.treble.enabled=false/' /system/build.prop
 
 ui_print " - removing bloatwares"
 rm -rf /system/preload/NaverV_N
