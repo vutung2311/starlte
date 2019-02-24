@@ -8,8 +8,8 @@ export PLATFORM_VERSION=9.0.0
 # export KBUILD_BUILD_TIMESTAMP="Mon Nov 23 00:45:00 +07 1987"
 export KBUILD_COMPILER_STRING="Google Clang 8.0"
 
-GCC_BIN_PATH=$HOME/opt/gcc-linaro-7.4.1-2019.02-x86_64_aarch64-linux-gnu/bin
-CLANG_BIN_PATH=$HOME/Git/clang-linux-x86/clang-r346389b/bin
+GCC_BIN_PATH=$HOME/opt/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu/bin
+CLANG_BIN_PATH=$HOME/Git/clang-linux-x86/clang-r349610/bin
 
 BUILD_CROSS_COMPILE=$GCC_BIN_PATH/aarch64-linux-gnu-
 BUILD_CC=$CLANG_BIN_PATH/clang
