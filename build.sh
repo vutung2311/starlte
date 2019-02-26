@@ -9,14 +9,14 @@ export PLATFORM_VERSION=9.0.0
 export KBUILD_COMPILER_STRING="Google Clang 8.0"
 
 GCC_BIN_PATH=$HOME/opt/gcc-arm-8.2-2019.01-x86_64-aarch64-linux-gnu/bin
-CLANG_BIN_PATH=$HOME/Git/clang-linux-x86/clang-r349610/bin
+# CLANG_BIN_PATH=$HOME/Git/clang-linux-x86/clang-r349610/bin
 
 BUILD_CROSS_COMPILE=$GCC_BIN_PATH/aarch64-linux-gnu-
-BUILD_CC=$CLANG_BIN_PATH/clang
+BUILD_CC=/usr/bin/clang
 # BUILD_CC="${BUILD_CROSS_COMPILE}gcc"
-BUILD_LD=$CLANG_BIN_PATH/ld.lld
+BUILD_LD=/usr/bin/ld.lld
 # BUILD_LD="${BUILD_CROSS_COMPILE}ld"
-BUILD_LDLTO=$CLANG_BIN_PATH/ld.lld
+BUILD_LDLTO=/usr/bin/ld.lld
 # BUILD_LDLTO="${BUILD_CROSS_COMPILE}ld.gold"
 BUILD_JOB_NUMBER="$(nproc)"
 # BUILD_JOB_NUMBER=1
