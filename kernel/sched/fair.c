@@ -9955,6 +9955,13 @@ more_balance:
 		raw_spin_lock_irqsave(&busiest->lock, flags);
 		update_rq_clock(busiest);
 
+		/* The world might have changed. Validate assumptions */
+		if (busiest->nr_running <= 1) {
+			raw_spin_unlock_irqrestore(&busiest->lock, flags);
+			env.flags &= ~LBF_ALL_PINNED;
+			goto no_move;
+		}
+
 		/*
 		 * Set loop_max when rq's lock is taken to prevent a race.
 		 */
@@ -10048,6 +10055,7 @@ more_balance:
 		}
 	}
 
+no_move:
 	if (!ld_moved) {
 		schedstat_inc(sd->lb_failed[idle]);
 		/*
