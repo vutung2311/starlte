@@ -5681,7 +5681,7 @@ static inline bool energy_aware(void)
  *
  *   norm_util = running_time/time ~ util/capacity
  */
-unsigned long __cpu_norm_util(unsigned long util, unsigned long capacity)
+static unsigned long __cpu_norm_util(unsigned long util, unsigned long capacity)
 {
 	if (util >= capacity)
 		return SCHED_CAPACITY_SCALE;
