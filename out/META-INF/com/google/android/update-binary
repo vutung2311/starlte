@@ -63,6 +63,8 @@ rm -rf /system/priv-app/knoxanalyticsagent
 rm -rf /system/priv-app/knoxvpnproxyhandler
 rm -rf /system/priv-app/KnoxCore
 rm -rf /system/priv-app/KnoxDesktopLauncher
+rm -rf /system/priv-app/KnoxGuard
+rm -rf /system/priv-app/KnoxContainerDesktop
 rm -rf /system/priv-app/ContainerAgent3
 rm -rf /system/priv-app/Bixby
 rm -rf /system/priv-app/BixbyAgentStub
@@ -82,9 +84,12 @@ rm -rf /system/priv-app/serviceModeApp_FB
 rm -rf /system/priv-app/SecureFolder
 rm -rf /system/priv-app/SamsungPass
 rm -rf /system/priv-app/SmartManager_v6_DeviceSecurity
+rm -rf /system/priv-app/SPPPushClient
+rm -rf /system/priv-app/SamsungCloudClient
 rm -rf /system/priv-app/Upday
 rm -rf /system/priv-app/Word_SamsungStub
-rm -rf /system/priv-app/GalaxyApps*
+rm -rf /system/priv-app/GalaxyAppsWidget_Phone_Dream
+rm -rf /system/priv-app/GalaxyApps_OPEN
 rm -rf /system/priv-app/GearVRService
 rm -rf /system/priv-app/Gear360Editor_Beyond
 rm -rf /system/priv-app/PaymentFramework
