@@ -82,6 +82,7 @@ rm -rf /system/priv-app/OneDrive_Samsung_v3
 rm -rf /system/priv-app/PowerPoint_SamsungStub
 rm -rf /system/priv-app/serviceModeApp_FB
 rm -rf /system/priv-app/SecureFolder
+rm -rf /system/priv-app/SamsungBilling
 rm -rf /system/priv-app/SamsungPass
 rm -rf /system/priv-app/SmartManager_v6_DeviceSecurity
 rm -rf /system/priv-app/SPPPushClient
