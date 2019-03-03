@@ -89,7 +89,6 @@ rm -rf /system/priv-app/SamsungCloudClient
 rm -rf /system/priv-app/Upday
 rm -rf /system/priv-app/Word_SamsungStub
 rm -rf /system/priv-app/GalaxyAppsWidget_Phone_Dream
-rm -rf /system/priv-app/GalaxyApps_OPEN
 rm -rf /system/priv-app/GearVRService
 rm -rf /system/priv-app/Gear360Editor_Beyond
 rm -rf /system/priv-app/PaymentFramework
