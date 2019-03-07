@@ -63,10 +63,10 @@ ifeq ($(CONFIG_LTO_CLANG),y)
 LDFLAGS += $(call ld-option, $(ARM64_OPTIMIZATION_FLAGS),)
 endif
 ifeq ($(CONFIG_SOC_EXYNOS9810), y)
-EXYNOS9810_OPTIMIZATION_FLAGS := -mcpu=cortex-a55+crypto+crc -mtune=cortex-a55+crypto+crc
-KBUILD_CFLAGS	+= $(call cc-option, $(EXYNOS9810_OPTIMIZATION_FLAGS),)
+EXYNOS9810_OPTIMIZATION_FLAGS := $(call cc-option, -mcpu=cortex-a55+crypto+crc,) $(call cc-option, -mtune=cortex-a55+crypto+crc,)
+KBUILD_CFLAGS	+= $(EXYNOS9810_OPTIMIZATION_FLAGS)
 ifeq ($(CONFIG_LTO_CLANG),y)
-LDFLAGS += $(call ld-option, $(EXYNOS9810_OPTIMIZATION_FLAGS),)
+LDFLAGS += $(EXYNOS9810_OPTIMIZATION_FLAGS)
 endif
 endif
 
