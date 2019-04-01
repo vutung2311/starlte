@@ -24,12 +24,6 @@ on init
 
     symlink /data/app /factory
 
-    #Reactivation Lock
-    #symlink /dev/block/platform/11120000.ufs/by-name/STEADY /dev/block/steady
-
-    #Google FRP solution
-    #symlink /dev/block/platform/11120000.ufs/by-name/PERSISTENT /dev/block/persistent
-
 # Sensors
 # Fingerprint_sensor
     chmod 0660 /dev/esfp0

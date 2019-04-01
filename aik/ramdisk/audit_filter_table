@@ -387,3 +387,40 @@ auditfilter shell vaultkeeperd:binder call;
 # http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-1402
 auditfilter	rild omc_vendor_file:file setattr;
 
+# P190207-05505
+auditfilter hal_fingerprint_default dumplog_data_file:dir search;
+
+# P190208-00234
+auditfilter mobicore apk_data_file:dir search;
+
+# P190211-07285
+auditfilter system_app rootfs:dir read;
+
+# P190217-01262 P190216-00013 
+auditfilter ueventd ueventd:capability kill;
+# P190216-02075
+auditfilter installd installd:capability kill;
+# P190218-07040
+auditfilter hal_usb_default hal_usb_default:capability kill;
+# http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-1478
+auditfilter thermal-engine thermal-engine:capability kill;
+
+# P190216-03096 
+auditfilter adbd oemfs:dir search;
+
+# http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-1470
+auditfilter statsd debugfs_trace_marker:file getattr;
+
+# P190218-00586 
+auditfilter hwservicemanager proc_avc_msg:file getattr;
+
+# P190218-08158 
+auditfilter vendor_init unlabeled:dir search;
+
+# http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-1490
+auditfilter policyloader_app dalvikcache_data_file:file write;
+
+# http://mobilerndhub.sec.samsung.net/its/browse/SEANDROID-1498
+auditfilter aasa_service_app dalvikcache_data_file:file write;
+
+
